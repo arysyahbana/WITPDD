@@ -383,7 +383,7 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" data-aos="fade-up"
                 data-aos-duration="1400">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-white uppercase bg-[#45474B]">
+                    <thead class="text-xs text-white uppercase bg-[#45474B] text-center">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 No
@@ -405,6 +405,9 @@
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Bukti Transaksi
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Foto Kegiatan
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Bukti Terealisasi
@@ -442,6 +445,22 @@
                                             alt="{{ $pembelanjaan->img_transaksi ?? '' }}"
                                             class="img-fluid img-thumbnail" style="max-width: 100px">
                                     </a>
+                                </td>
+                                <td class="py-4 text-white">
+                                    @if ($pembelanjaan->img_kegiatan)
+                                        @foreach (explode(',', $pembelanjaan->img_kegiatan) as $kegiatan)
+                                            @if (trim($kegiatan) != '')
+                                                <p class="mb-0 text-xs">
+                                                    <a href="{{ asset('dist/assets/img/kegiatan/' . trim($kegiatan)) }}"
+                                                        target="_blank">
+                                                        Lihat Gambar {{ $loop->iteration }}
+                                                    </a>
+                                                </p>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <span class="text-muted">Tidak ada gambar</span>
+                                    @endif
                                 </td>
                                 <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap ">
                                     @if ($pembelanjaan->img_terealisasi)

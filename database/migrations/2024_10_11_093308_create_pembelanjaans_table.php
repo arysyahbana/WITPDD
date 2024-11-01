@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('pendapatan_id')->constrained('pendapatans');
             $table->integer('jumlah_anggaran');
             $table->string('img_transaksi');
+            $table->string('img_kegiatan')->nullable();
             $table->string('img_terealisasi')->nullable();
             $table->string('status');
             $table->timestamps();

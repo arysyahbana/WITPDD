@@ -24,6 +24,8 @@ class PembelanjaanController extends Controller
                 'pendapatan_id' => 'required',
                 'jumlah_anggaran' => 'required',
                 'img_transaksi' => $imageRule . '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'img_kegiatan' => 'nullable|array',
+                'img_kegiatan.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'img_terealisasi' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ],
             [
@@ -39,6 +41,10 @@ class PembelanjaanController extends Controller
                 'img_terealisasi.image' => 'Bukti Terealisasi harus berupa gambar',
                 'img_terealisasi.mimes' => 'Bukti Terealisasi harus berupa jpeg, png, jpg, gif, svg',
                 'img_terealisasi.max' => 'Bukti Terealisasi tidak boleh lebih dari 2 MB',
+                'img_kegiatan.array' => 'Gambar harus dalam format array',
+                'img_kegiatan.*.image' => 'Setiap file harus berupa gambar',
+                'img_kegiatan.*.max' => 'Setiap gambar maksimal 2MB',
+                'img_kegiatan.*.mimes' => 'Setiap gambar harus berupa jpeg, png, jpg, gif, atau svg',
             ],
         );
     }
@@ -54,6 +60,8 @@ class PembelanjaanController extends Controller
         $directory = '';
         if (strpos($name, 'transaksi_') === 0) {
             $directory = 'transaksi';
+        } elseif (strpos($name, 'kegiatan') === 0) {
+            $directory = 'kegiatan';
         } elseif (strpos($name, 'terealisasi_') === 0) {
             $directory = 'terealisasi';
         }
@@ -106,20 +114,33 @@ class PembelanjaanController extends Controller
         $store->pendapatan_id = $request->input('pendapatan_id');
         $store->jumlah_anggaran = $request->input('jumlah_anggaran');
         $store->img_transaksi = $this->getImage($request->file('img_transaksi'), 'transaksi_' . Str::uuid());
+
+        $imgKegiatans = $request->file('img_kegiatan');
+        if (!is_array($imgKegiatans)) {
+            $imgKegiatans = explode(',', $imgKegiatans);
+        }
+
+        $savedImgKegiatans = [];
+
+        if (is_array($imgKegiatans)) {
+            foreach ($imgKegiatans as $index => $image) {
+                $savedImgKegiatans[] = $this->getImage($image, 'kegiatan_' . $store->tgl_transaksi . '_' . ($index + 1));
+            }
+        }
+
+        $imgKegiatan = implode(',', $savedImgKegiatans);
+        $store->img_kegiatan = $imgKegiatan;
+
         $store->img_terealisasi = $this->getImage($request->file('img_terealisasi'), 'terealisasi_' . Str::uuid());
 
-        if ($store->img_terealisasi == null) {
-            $store->status = 'Sedang Berjalan';
-        } else {
-            $store->status = 'Terlaksana';
-        }
+        $store->status = $store->img_terealisasi ? 'Terlaksana' : 'Sedang Berjalan';
 
         $store->save();
 
         if ($store) {
-            return redirect()->back()->with('success', 'Berhasil Menambahkan Data Transaski');
+            return redirect()->back()->with('success', 'Berhasil Menambahkan Data Pembelanjaan');
         } else {
-            return redirect()->back()->with('error', 'Gagal Menambahkan Data Transaski');
+            return redirect()->back()->with('error', 'Gagal Menambahkan Data Pembelanjaan');
         }
     }
 
@@ -134,27 +155,46 @@ class PembelanjaanController extends Controller
         $update->pendapatan_id = $request->input('pendapatan_id');
         $update->jumlah_anggaran = $request->input('jumlah_anggaran');
 
+        // Update img_transaksi
         if ($request->hasFile('img_transaksi')) {
             $this->deleteImage('transaksi', $update->img_transaksi);
             $update->img_transaksi = $this->getImage($request->file('img_transaksi'), 'transaksi_' . Str::uuid());
         }
+
+        // Update img_terealisasi
         if ($request->hasFile('img_terealisasi')) {
             $this->deleteImage('terealisasi', $update->img_terealisasi);
             $update->img_terealisasi = $this->getImage($request->file('img_terealisasi'), 'terealisasi_' . Str::uuid());
         }
 
-        if ($update->img_terealisasi == null) {
-            $update->status = 'Sedang Berjalan';
-        } else {
-            $update->status = 'Terlaksana';
+        // Update img_kegiatan
+        if ($request->hasFile('img_kegiatan')) {
+            // Delete old img_kegiatan
+            $oldImages = explode(',', $update->img_kegiatan);
+            foreach ($oldImages as $oldImage) {
+                $this->deleteImage('kegiatan', $oldImage);
+            }
+
+            // Save new img_kegiatan
+            $imgKegiatans = $request->file('img_kegiatan');
+            $savedImgKegiatans = [];
+
+            foreach ($imgKegiatans as $index => $image) {
+                $savedImgKegiatans[] = $this->getImage($image, 'kegiatan_' . $update->tgl_transaksi . '_' . ($index + 1));
+            }
+
+            $update->img_kegiatan = implode(',', $savedImgKegiatans);
         }
+
+        // Update status
+        $update->status = $update->img_terealisasi ? 'Terlaksana' : 'Sedang Berjalan';
 
         $update->save();
 
         if ($update) {
-            return redirect()->back()->with('success', 'Berhasil Merubah Data Transaski');
+            return redirect()->back()->with('success', 'Berhasil Merubah Data Pembelanjaan');
         } else {
-            return redirect()->back()->with('error', 'Gagal Merubah Data Transaski');
+            return redirect()->back()->with('error', 'Gagal Merubah Data Pembelanjaan');
         }
     }
 
@@ -162,12 +202,20 @@ class PembelanjaanController extends Controller
     {
         $delete = Pembelanjaan::findOrFail($id);
 
+        // Delete img_transaksi and img_terealisasi
         $this->deleteImage('transaksi', $delete->img_transaksi);
         $this->deleteImage('terealisasi', $delete->img_terealisasi);
+
+        // Delete img_kegiatan
+        $imgKegiatans = explode(',', $delete->img_kegiatan);
+        foreach ($imgKegiatans as $image) {
+            $this->deleteImage('kegiatan', $image);
+        }
 
         $delete->delete();
         return redirect()->back()->with('success', 'Data pembelanjaan berhasil dihapus.');
     }
+
 
     public function exportExcel(Request $request)
     {

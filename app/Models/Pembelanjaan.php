@@ -16,6 +16,7 @@ class Pembelanjaan extends Model
         'pendapatan_id',
         'jumlah_anggaran',
         'img_transaksi',
+        'img_kegiatan',
         'img_terealisasi',
         'status',
     ];

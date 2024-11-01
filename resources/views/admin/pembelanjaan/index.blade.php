@@ -55,6 +55,7 @@
                                         <th>Sumber Dana</th>
                                         <th>Jumlah Anggaran Yang di Pakai</th>
                                         <th>Bukti Transaksi</th>
+                                        <th>Foto Kegiatan</th>
                                         <th>Bukti Terealisasi</th>
                                         <th>Keterangan</th>
                                         <th>Aksi</th>
@@ -79,6 +80,22 @@
                                                         alt="{{ $item->img_transaksi ?? '' }}"
                                                         class="img-fluid img-thumbnail" style="max-width: 100px">
                                                 </a>
+                                            </td>
+                                            <td style="min-width: 100px">
+                                                @if ($item->img_kegiatan)
+                                                    @foreach (explode(',', $item->img_kegiatan) as $kegiatan)
+                                                        @if (trim($kegiatan) != '')
+                                                            <p class="mb-0 text-xs">
+                                                                <a href="{{ asset('dist/assets/img/kegiatan/' . trim($kegiatan)) }}"
+                                                                    target="_blank">
+                                                                    Lihat Gambar {{ $loop->iteration }}
+                                                                </a>
+                                                            </p>
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    <span class="text-muted">Tidak ada gambar</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 @if ($item->img_terealisasi)
@@ -188,6 +205,41 @@
                                                                                 id="img_transaksi" name="img_transaksi">
                                                                             <label class="custom-file-label"
                                                                                 for="img_transaksi">Pilih Foto</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    @if ($item->img_kegiatan)
+                                                                        <label for="img_kegiatan"
+                                                                            class="col-form-label">Perbarui Foto
+                                                                            Kegiatan</label>
+                                                                        <div class="mb-2">
+                                                                            @foreach (explode(',', $item->img_kegiatan) as $kegiatan)
+                                                                                @if (trim($kegiatan) != '')
+                                                                                    <p class="mb-0 text-xs">
+                                                                                        <a href="{{ asset('dist/assets/img/kegiatan/' . trim($kegiatan)) }}"
+                                                                                            target="_blank">
+                                                                                            Lihat Gambar
+                                                                                            {{ $loop->iteration }}
+                                                                                        </a>
+                                                                                    </p>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        </div>
+                                                                    @else
+                                                                        <label for="img_kegiatan"
+                                                                            class="col-form-label">Foto
+                                                                            Kegiatan</label>
+                                                                    @endif
+                                                                    <div class="input-group">
+                                                                        <div class="custom-file">
+                                                                            <input type="file"
+                                                                                class="custom-file-input"
+                                                                                id="img_kegiatan" name="img_kegiatan[]"
+                                                                                multiple>
+                                                                            <label class="custom-file-label"
+                                                                                for="img_kegiatan">Pilih Foto</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -333,7 +385,18 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="img_terealisasi" class="col-form-label">Bukti Terealisasi (opsional)</label>
+                                <label for="kegiatan" class="col-form-label">Foto Kegiatan (Opsional)</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="kegiatan"
+                                            name="img_kegiatan[]" multiple>
+                                        <label class="custom-file-label" for="kegiatan">Pilih Foto</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="img_terealisasi" class="col-form-label">Bukti Terealisasi (Opsional)</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="img_terealisasi"
