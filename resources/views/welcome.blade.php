@@ -21,8 +21,8 @@
     <nav class="bg-gradient-to-r from-[#45474B] to-[#343131] border-gray-200 fixed z-10 w-full">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="{{ asset('dist/img/logo.webp') }}" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold text-white whitespace-nowrap">WITPDD</span>
+                <img src="{{ asset('dist/img/logo.webp') }}" class="h-12" alt="Flowbite Logo" />
+                <span class="self-center text-2xl font-semibold text-white whitespace-nowrap">Pemerintahan Desa Durian IV Mbelang</span>
             </a>
             <button data-collapse-toggle="navbar-dropdown" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -98,13 +98,13 @@
     <section id="home">
         <div class="bg-gradient-to-r from-[#45474B] to-[#343131] w-full pt-20 py-12 rounded-b-[100px]">
             <div class="container mx-auto mt-1 lg:mt-24 mb-16">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div class="text-[#EBF4F6] py-16 mx-12 md:mx-0" data-aos="fade-right" data-aos-duration="1000">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mx-24">
+                    <div class="text-[#EBF4F6] mx-12 md:mx-0" data-aos="fade-right" data-aos-duration="1000">
                         <p class="text-xl text-[#23F9B5]">#Transparansi Dana Desa</p>
-                        <p class="text-5xl font-bold mt-2 mb-1">
+                        <p class="text-4xl font-bold mt-2 mb-1">
                             Website Informasi Transparansi Penggunaan Dana Desa
                         </p>
-                        <p class="text-xl mb-5">Mempermudah masyarakat dalam mengawasi penggunaan dana desa secara
+                        <p class="text-1xl mb-5">Mempermudah masyarakat dalam mengawasi penggunaan dana desa secara
                             transparan dan
                             akuntabel</p>
                         <a href="{{ route('login') }}" type="button"
@@ -112,16 +112,16 @@
                             Login
                         </a>
                     </div>
-                    <div class="rounded-3xl shadow-xl mx-12 md:mx-0 max-h-[400px] relative" data-aos="fade-left"
+                    <div class="rounded-3xl shadow-xl mx-12 md:mx-0 max-h-[300px] relative" data-aos="fade-left"
                         data-aos-duration="1000">
                         <img src="{{ asset('dist/img/banner2.jpg') }}" alt=""
-                            class="object-cover h-full w-full rounded-3xl border" />
-                        <div class="hidden xl:block absolute h-full w-[250px] top-[-60px] left-[-60px] max-h-[250px]"
+                            class="object-cover h-full w-full rounded-3xl border max-h-[300px]" />
+                        <div class="hidden xl:block absolute h-full w-[250px] top-[-40px] left-[-60px] max-h-[150px]"
                             data-aos="zoom-in" data-aos-duration="1700">
                             <img src="{{ asset('dist/img/banner1.jpg') }}" alt=""
                                 class="object-cover h-full w-full rounded-3xl shadow-xl border" />
                         </div>
-                        <div class="hidden xl:block absolute h-full w-[250px] top-[220px] right-[-60px] max-h-[250px]"
+                        <div class="hidden xl:block absolute h-full w-[250px] top-[220px] right-[-30px] max-h-[150px]"
                             data-aos="zoom-in" data-aos-duration="2000">
                             <img src="{{ asset('dist/img/banner3.jpg') }}" alt=""
                                 class="object-cover h-full w-full rounded-3xl shadow-xl border" />
@@ -134,7 +134,7 @@
 
     <main class="container mx-auto my-20">
         <!-- about -->
-        <section id="about" class="grid grid-cols-1 md:grid-cols-2">
+        <section id="about" class="grid grid-cols-1 md:grid-cols-2 mx-5">
             <div class="overflow-hidden h-96 rounded-3xl" data-aos="fade-up" data-aos-duration="1200">
                 <img src="{{ asset('dist/img/banner4.jpg') }}" alt="" class="object-cover rounded-3xl" />
             </div>
@@ -157,7 +157,7 @@
         </section>
 
         <!-- Visi -->
-        <section id="visi" class="mt-32">
+        <section id="visi" class="mt-32 mx-5">
             <p class="text-center text-3xl font-bold text-teal-500">VISI</p>
             <p class="text-center text-[#45474B]">
                 Berikut Visi Desa Durian IV Mbelang.
@@ -169,7 +169,7 @@
         </section>
 
         <!-- misi -->
-        <section id="misi" class="mt-32">
+        <section id="misi" class="mt-32 mx-5">
             <p class="text-center text-3xl font-bold text-teal-500">MISI</p>
             <p class="text-center text-[#45474B]">
                 Berikut Misi Desa Durian IV Mbelang.
@@ -265,7 +265,7 @@
         </div>
 
         <!-- pendapatan -->
-        <section id="pendapatan" class="mt-5">
+        <section id="pendapatan" class="mt-5 mx-5">
             <p class="text-center text-3xl font-bold text-teal-500">PENDAPATAN DANA DESA</p>
             <p class="text-center text-[#45474B]">
                 Berikut Pendapatan Dana Desa Durian IV Mbelang.
@@ -324,7 +324,7 @@
         </section>
 
         <!-- anggaran -->
-        <section id="anggaran" class="mt-32">
+        <section id="anggaran" class="mt-32 mx-5">
             <p class="text-center text-3xl font-bold text-teal-500">ANGGARAN DANA DESA</p>
             <p class="text-center text-[#45474B]">
                 Berikut Anggaran Dana Desa Durian IV Mbelang.
@@ -373,7 +373,7 @@
         </section>
 
         <!-- pembelanjaan -->
-        <section id="pembelanjaan" class="mt-32">
+        <section id="pembelanjaan" class="mt-32 mx-5">
             <p class="text-center text-3xl font-bold text-teal-500">
                 PEMBELANJAAN DANA DESA</p>
             <p class="text-center text-[#45474B]">
@@ -486,7 +486,7 @@
         </section>
 
         <!-- laporan -->
-        <section id="laporan" class="mt-32">
+        <section id="laporan" class="mt-32 mx-5">
             <p class="text-center text-3xl font-bold text-teal-500">LAPORAN KEUANGAN</p>
             <p class="text-center text-[#45474B]">
                 Berikut Laporan Keuangan Desa Durian IV Mbelang.

@@ -23,7 +23,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Pendapatan Desa Tahun Ini</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rp.
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 text-xs">Rp.
                                     {{ number_format($total_pendapatan, 0, ',', '.' ?? '') }}</div>
                             </div>
                             <div class="col-auto">
@@ -40,9 +40,10 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pembelanjaan Tahun
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pembelanjaan
+                                    Tahun
                                     Ini</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Rp.
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 text-xs">Rp.
                                     {{ number_format($total_pembelanjaan, 0, ',', '.' ?? '') }}</div>
                             </div>
                             <div class="col-auto">
@@ -61,7 +62,7 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Kritik dan Saran
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $krisar ?? '' }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 text-xs">{{ $krisar ?? '' }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -78,7 +79,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Operator</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $operator ?? '' }}</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800 text-xs">{{ $operator ?? '' }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-users fa-2x text-gray-300"></i>

@@ -160,7 +160,7 @@
                                                                         @foreach ($anggarans as $bidang)
                                                                             <option value="{{ $bidang->id }}"
                                                                                 {{ $item->anggaran_id == $bidang->id ? 'selected' : '' }}>
-                                                                                {{ $bidang->bidang }}
+                                                                                {{ $bidang->bidang }} - {{ \Carbon\Carbon::parse($bidang->tgl_input)->format('Y') }}
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -173,7 +173,7 @@
                                                                         @foreach ($pendapatans as $pendapatan)
                                                                             <option value="{{ $pendapatan->id }}"
                                                                                 {{ $item->pendapatan_id == $pendapatan->id ? 'selected' : '' }}>
-                                                                                {{ $pendapatan->sumber_dana }}
+                                                                                {{ $pendapatan->sumber_dana }} - {{ \Carbon\Carbon::parse($pendapatan->tgl_input)->format('Y') }}
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -351,7 +351,7 @@
                                     <option selected hidden>--- Pilih ---</option>
                                     @foreach ($anggarans as $bidang)
                                         <option value="{{ $bidang->id }}">
-                                            {{ $bidang->bidang }}
+                                            {{ $bidang->bidang }} - {{ \Carbon\Carbon::parse($bidang->tgl_input)->format('Y') }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -362,7 +362,7 @@
                                     <option selected hidden>--- Pilih ---</option>
                                     @foreach ($pendapatans as $pendapatan)
                                         <option value="{{ $pendapatan->id }}">
-                                            {{ $pendapatan->sumber_dana }}
+                                            {{ $pendapatan->sumber_dana }} - {{ \Carbon\Carbon::parse($pendapatan->tgl_input)->format('Y') }}
                                         </option>
                                     @endforeach
                                 </select>
