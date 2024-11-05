@@ -16,6 +16,7 @@ class AnggaranController extends Controller
     {
         $request->validate(
             [
+                'tgl_input' => 'required',
                 'bidang' => 'required',
                 'jumlah_anggaran' => 'required',
             ]

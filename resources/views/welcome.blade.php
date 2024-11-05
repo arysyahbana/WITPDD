@@ -22,7 +22,10 @@
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('dist/img/logo.webp') }}" class="h-12" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold text-white whitespace-nowrap">Pemerintahan Desa Durian IV Mbelang</span>
+                <span
+                    class="self-center text-2xl font-semibold text-white whitespace-nowrap hidden xl:block">Pemerintahan
+                    Desa Durian
+                    IV Mbelang</span>
             </a>
             <button data-collapse-toggle="navbar-dropdown" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -96,15 +99,17 @@
     </nav>
 
     <section id="home">
-        <div class="bg-gradient-to-r from-[#45474B] to-[#343131] w-full pt-20 py-12 rounded-b-[100px]">
-            <div class="container mx-auto mt-1 lg:mt-24 mb-16">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mx-24">
-                    <div class="text-[#EBF4F6] mx-12 md:mx-0" data-aos="fade-right" data-aos-duration="1000">
-                        <p class="text-xl text-[#23F9B5]">#Transparansi Dana Desa</p>
-                        <p class="text-4xl font-bold mt-2 mb-1">
+        <div
+            class="bg-gradient-to-r from-[#45474B] to-[#343131] w-full pt-20 py-12 rounded-b-[30px] xl:rounded-b-[100px] overflow-hidden">
+            <div class="container mx-auto mt-1 lg:mt-24 xl:mb-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:mx-24">
+                    <div class="text-[#EBF4F6] mx-12 md:mx-5" data-aos="fade-right" data-aos-duration="1000">
+                        <p class="text-xl text-[#23F9B5] md:text-md xl:text-xl">#Transparansi Dana Desa</p>
+                        <p class="text-4xl font-bold mt-2 mb-1 md:text-xl xl:text-4xl">
                             Website Informasi Transparansi Penggunaan Dana Desa
                         </p>
-                        <p class="text-1xl mb-5">Mempermudah masyarakat dalam mengawasi penggunaan dana desa secara
+                        <p class="text-xl mb-5 md:text-sm xl:text-xl">Mempermudah masyarakat dalam mengawasi penggunaan
+                            dana desa secara
                             transparan dan
                             akuntabel</p>
                         <a href="{{ route('login') }}" type="button"
@@ -112,10 +117,10 @@
                             Login
                         </a>
                     </div>
-                    <div class="rounded-3xl shadow-xl mx-12 md:mx-0 max-h-[300px] relative" data-aos="fade-left"
-                        data-aos-duration="1000">
+                    <div class="rounded-3xl shadow-xl mx-12 max-h-[200px] xl:max-h-[300px] relative hidden md:block md:mx-5"
+                        data-aos="fade-left" data-aos-duration="1000">
                         <img src="{{ asset('dist/img/banner2.jpg') }}" alt=""
-                            class="object-cover h-full w-full rounded-3xl border max-h-[300px]" />
+                            class="object-cover h-full w-full rounded-3xl border" />
                         <div class="hidden xl:block absolute h-full w-[250px] top-[-40px] left-[-60px] max-h-[150px]"
                             data-aos="zoom-in" data-aos-duration="1700">
                             <img src="{{ asset('dist/img/banner1.jpg') }}" alt=""
@@ -134,16 +139,16 @@
 
     <main class="container mx-auto my-20">
         <!-- about -->
-        <section id="about" class="grid grid-cols-1 md:grid-cols-2 mx-5">
-            <div class="overflow-hidden h-96 rounded-3xl" data-aos="fade-up" data-aos-duration="1200">
+        <section id="about" class="grid grid-cols-1 xl:grid-cols-2 mx-5">
+            <div class="overflow-hidden lg:h-96 rounded-3xl" data-aos="fade-up" data-aos-duration="1200">
                 <img src="{{ asset('dist/img/banner4.jpg') }}" alt="" class="object-cover rounded-3xl" />
             </div>
-            <div class="px-12">
-                <p class="text-teal-500">ABOUT</p>
-                <p class="text-3xl font-bold text-[#45474B]">
+            <div class="mt-6 xl:mt-0 lg:px-12">
+                <p class="text-teal-500 text-center lg:text-start">ABOUT</p>
+                <p class="text-3xl font-bold text-[#45474B] text-center lg:text-start">
                     Website Informasi Transparansi Penggunaan Dana Desa
                 </p>
-                <p class="mt-5 text-slate-600">
+                <p class="mt-5 text-slate-600 text-center lg:text-start">
                     Aplikasi ini bertujuan mempermudah masyarakat dalam mengawasi penggunaan dana desa secara transparan
                     dan akuntabel. Dengan platform ini, masyarakat dapat mengakses informasi terkait alokasi dan
                     penggunaan dana desa secara detail, mulai dari tahap perencanaan hingga pelaksanaan. Hal ini
@@ -162,7 +167,7 @@
             <p class="text-center text-[#45474B]">
                 Berikut Visi Desa Durian IV Mbelang.
             </p>
-            <p class="text-center text-slate-600 mt-5 italic px-72">
+            <p class="text-center text-slate-600 mt-5 italic lg:px-72">
                 "Mewujudkan Desa Durian IV Mbelang sebagai Pusat Usaha Pertanian (Agribisnis) di Kecamatan STM Hulu yang
                 berasaskan Iman dan Taqwa serta Ilmu Pengetahuan dan Teknologi Tahun 2030"
             </p>
@@ -174,7 +179,7 @@
             <p class="text-center text-[#45474B]">
                 Berikut Misi Desa Durian IV Mbelang.
             </p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mt-5 justify-items-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5 justify-items-center">
                 <div class="bg-gradient-to-r from-[#45474B] to-[#343131] hover:from-teal-300 hover:to-teal-500 max-w-lg text-white hover:text-[#45474B] rounded-xl shadow-xl"
                     target="blank" data-aos="fade-up" data-aos-duration="1000">
                     <div class="p-5 overflow-hidden rounded-xl">
@@ -541,7 +546,7 @@
         </section>
 
         <!-- krisar -->
-        <section id="krisar" class="mt-32">
+        <section id="krisar" class="mt-32 mx-5">
             <p class="text-center text-3xl font-bold text-teal-500">KRITIK DAN SARAN</p>
             <p class="text-center text-[#45474B]">
                 Sampaikan Kritik dan Saranmu

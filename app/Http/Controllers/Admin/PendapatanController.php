@@ -15,6 +15,7 @@ class PendapatanController extends Controller
     {
         $request->validate(
             [
+                'tgl_input' => 'required',
                 'sumber_dana' => 'required',
                 'jumlah_anggaran' => 'required',
                 'img' => $imageRule . '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
