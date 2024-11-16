@@ -42,4 +42,19 @@ class KrisarController extends Controller
 
         return Excel::download(new KrisarExport($krisar), 'krisar_' . ($tahun ?? 'semua') . '.xlsx');
     }
+
+    public function destroy($id)
+    {
+        $krisar = Krisar::findOrFail($id);
+
+        if ($krisar->gambar) {
+            $imagePath = public_path('dist/assets/img/krisar/' . $krisar->gambar);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        $krisar->delete();
+
+        return redirect()->back()->with('success', 'Data Kritik dan Saran berhasil dihapus');
+    }
 }

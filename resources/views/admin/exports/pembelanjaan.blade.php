@@ -8,7 +8,7 @@
             <th>Sumber Dana</th>
             <th>Jumlah Anggaran Yang di Pakai</th>
             <th>Bukti Transaksi</th>
-            <th>Bukti Terealisasi</th>
+            <th>Terlaksana</th>
             <th>Keterangan</th>
         </tr>
     </thead>
@@ -32,9 +32,9 @@
                 </td>
                 <td>
                     @if (!empty($item->img_terealisasi))
-                        <p>Ada</p>
+                        <p>Terlaksana</p>
                     @else
-                        <p>Tidak Ada</p>
+                        <p>Belum Terlaksana</p>
                     @endif
                 </td>
                 <td>{{ $item->status ?? '' }}</td>

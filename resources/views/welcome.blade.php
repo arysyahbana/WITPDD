@@ -278,6 +278,14 @@
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" data-aos="fade-up"
                 data-aos-duration="1000">
+                @if ($pendapatans->isEmpty())
+                @else
+                    <div class="flex justify-end mb-5 w-full">
+                        <a href="{{ route('pendapatan.pdf', ['tahun' => $filterYear]) }}"
+                            class="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Download
+                            PDF</a>
+                    </div>
+                @endif
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-white uppercase bg-[#45474B]">
                         <tr>
@@ -337,6 +345,14 @@
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" data-aos="fade-up"
                 data-aos-duration="1200">
+                @if ($anggarans->isEmpty())
+                @else
+                    <div class="flex justify-end mb-5 w-full">
+                        <a href="{{ route('anggaran.pdf', ['tahun' => $filterYear]) }}"
+                            class="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Download
+                            PDF</a>
+                    </div>
+                @endif
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-white uppercase bg-[#45474B]">
                         <tr>
@@ -387,6 +403,14 @@
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" data-aos="fade-up"
                 data-aos-duration="1400">
+                @if ($pembelanjaans->isEmpty())
+                @else
+                    <div class="flex justify-end mb-5 w-full">
+                        <a href="{{ route('pembelanjaan.pdf', ['tahun' => $filterYear]) }}"
+                            class="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Download
+                            PDF</a>
+                    </div>
+                @endif
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-white uppercase bg-[#45474B] text-center">
                         <tr>
@@ -415,7 +439,7 @@
                                 Foto Kegiatan
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Bukti Terealisasi
+                                Terlaksana
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Keterangan
@@ -499,6 +523,14 @@
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5" data-aos="fade-up"
                 data-aos-duration="1600">
+                @if ($laporans->isEmpty())
+                @else
+                    <div class="flex justify-end mb-5 w-full">
+                        <a href="{{ route('laporan.pdf', ['tahun' => $filterYear]) }}"
+                            class="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Download
+                            PDF</a>
+                    </div>
+                @endif
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-white uppercase bg-[#45474B]">
                         <tr>
@@ -553,7 +585,7 @@
             </p>
 
             <form action="{{ route('krisar.store') }}" class="max-w-2xl mx-auto mt-12" data-aos="fade-up"
-                data-aos-duration="1000" method="POST">
+                data-aos-duration="1000" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-5">
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
@@ -562,10 +594,16 @@
                         placeholder="Masukan Nama" required name="nama" />
                 </div>
                 <div class="mb-5">
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                    <input type="email" id="email"
+                    <label for="hp" class="block mb-2 text-sm font-medium text-gray-900">Nomor HP</label>
+                    <input type="number" id="hp"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="Masukan Email" required name="email" />
+                        placeholder="Masukan Nomor HP" required name="hp" />
+                </div>
+                <div class="mb-5">
+                    <label class="block mb-2 text-sm font-medium text-gray-900" for="gambar">Gambar</label>
+                    <input
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+                        id="gambar" type="file" name="gambar">
                 </div>
                 <div class="mb-5">
                     <label for="kritik" class="block mb-2 text-sm font-medium text-gray-900">Kritik</label>

@@ -27,6 +27,11 @@ use Illuminate\Support\Facades\Route;
 
 route::get('/', [HomeController::class, 'index'])->name('home');
 route::post('/krisar-store', [HomeController::class, 'store'])->name('krisar.store');
+Route::get('/pendapatan/pdf', [HomeController::class, 'pdf_pendapatan'])->name('pendapatan.pdf');
+Route::get('/anggaran/pdf', [HomeController::class, 'pdf_anggaran'])->name('anggaran.pdf');
+Route::get('/pembelanjaan/pdf', [HomeController::class, 'pdf_pembelanjaan'])->name('pembelanjaan.pdf');
+Route::get('/laporan/pdf', [HomeController::class, 'pdf_laporan'])->name('laporan.pdf');
+
 
 route::middleware('auth')->group(function () {
     route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -67,6 +72,7 @@ route::middleware('auth')->group(function () {
     });
     Route::prefix('krisar')->group(function () {
         route::get('/show', [KrisarController::class, 'index'])->name('krisar.index');
+        route::get('/destroy/{id}', [KrisarController::class, 'destroy'])->name('krisar.destroy');
         route::get('/export-excel', [KrisarController::class, 'exportExcel'])->name('krisar.export');
     });
     Route::prefix('opearator')->group(function () {

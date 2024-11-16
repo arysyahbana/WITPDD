@@ -48,9 +48,11 @@
                                         <th class="text-center">No</th>
                                         <th class="text-center">Tanggal</th>
                                         <th class="text-center">Nama</th>
-                                        <th class="text-center">Email</th>
+                                        <th class="text-center">No HP</th>
+                                        <th class="text-center">Gambar</th>
                                         <th class="text-center">Kritik</th>
                                         <th class="text-center">Saran</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,12 +62,54 @@
                                             <td>{{ \Carbon\Carbon::parse($item->created_at ?? '')->locale('id')->translatedFormat('d F Y') }}
                                             </td>
                                             <td>{{ $item->nama ?? '' }}</td>
-                                            <td>{{ $item->email ?? '' }}</td>
+                                            <td>{{ $item->hp ?? '' }}</td>
+                                            <td>
+                                                <a href="{{ asset('dist/assets/img/krisar/' . $item->gambar ?? '') }}"
+                                                    target="_blank">
+                                                    <img src="{{ asset('dist/assets/img/krisar/' . $item->gambar ?? '') }}"
+                                                        alt="{{ $item->gambar ?? '' }}" class="img-fluid img-thumbnail"
+                                                        style="max-width: 100px">
+                                                </a>
+                                            </td>
                                             <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
                                                 {{ $item->kritik ?? '' }}</td>
                                             <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
                                                 {{ $item->saran ?? '' }}</td>
+                                            <td class="text-center">
+                                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal"
+                                                    data-target="#hapusKrisar{{ $item->id }}"><i
+                                                        class="fas fa-trash"></i></a>
+                                            </td>
                                         </tr>
+
+                                        <!-- Modal Hapus -->
+                                        <div class="modal fade" id="hapusKrisar{{ $item->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="hapusKrisarTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Hapus
+                                                            Kritik dan Saran
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-center">
+                                                        <img src="{{ asset('dist/img/bin.gif') }}" alt=""
+                                                            class="img-fluid w-25">
+                                                        <p>Yakin ingin menghapus data?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-sm btn-secondary"
+                                                            data-dismiss="modal">Tutup</button>
+                                                        <a href="{{ route('krisar.destroy', $item->id) }}"
+                                                            class="btn btn-sm btn-danger">Hapus</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
                                 </tbody>
                             </table>

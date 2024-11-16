@@ -56,7 +56,7 @@
                                         <th>Jumlah Anggaran Yang di Pakai</th>
                                         <th>Bukti Transaksi</th>
                                         <th>Foto Kegiatan</th>
-                                        <th>Bukti Terealisasi</th>
+                                        <th>Terlaksana</th>
                                         <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -106,7 +106,7 @@
                                                             class="img-fluid img-thumbnail" style="max-width: 100px">
                                                     </a>
                                                 @else
-                                                    <span>Tidak Ada</span>
+                                                    <span>Belum Terlaksana</span>
                                                 @endif
                                             </td>
                                             <td>{{ $item->status ?? '' }}</td>
@@ -160,7 +160,8 @@
                                                                         @foreach ($anggarans as $bidang)
                                                                             <option value="{{ $bidang->id }}"
                                                                                 {{ $item->anggaran_id == $bidang->id ? 'selected' : '' }}>
-                                                                                {{ $bidang->bidang }} - {{ \Carbon\Carbon::parse($bidang->tgl_input)->format('Y') }}
+                                                                                {{ $bidang->bidang }} -
+                                                                                {{ \Carbon\Carbon::parse($bidang->tgl_input)->format('Y') }}
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -173,7 +174,8 @@
                                                                         @foreach ($pendapatans as $pendapatan)
                                                                             <option value="{{ $pendapatan->id }}"
                                                                                 {{ $item->pendapatan_id == $pendapatan->id ? 'selected' : '' }}>
-                                                                                {{ $pendapatan->sumber_dana }} - {{ \Carbon\Carbon::parse($pendapatan->tgl_input)->format('Y') }}
+                                                                                {{ $pendapatan->sumber_dana }} -
+                                                                                {{ \Carbon\Carbon::parse($pendapatan->tgl_input)->format('Y') }}
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
@@ -247,12 +249,11 @@
                                                                 <div class="mb-3">
                                                                     @if ($item->img_terealisasi == null)
                                                                         <label for="img_terealisasi"
-                                                                            class="col-form-label">Bukti
-                                                                            Terealisasi</label>
+                                                                            class="col-form-label">Terlaksana</label>
                                                                     @else
                                                                         <label for="img_terealisasi"
-                                                                            class="col-form-label">Perbarui Bukti
-                                                                            Terealisasi</label>
+                                                                            class="col-form-label">Perbarui
+                                                                            Terlaksana</label>
                                                                         <a href="{{ asset('dist/assets/img/terealisasi/' . $item->img_terealisasi ?? '') }}"
                                                                             target="_blank">
                                                                             <img src="{{ asset('dist/assets/img/terealisasi/' . $item->img_terealisasi ?? '') }}"
@@ -351,7 +352,8 @@
                                     <option selected hidden>--- Pilih ---</option>
                                     @foreach ($anggarans as $bidang)
                                         <option value="{{ $bidang->id }}">
-                                            {{ $bidang->bidang }} - {{ \Carbon\Carbon::parse($bidang->tgl_input)->format('Y') }}
+                                            {{ $bidang->bidang }} -
+                                            {{ \Carbon\Carbon::parse($bidang->tgl_input)->format('Y') }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -362,7 +364,8 @@
                                     <option selected hidden>--- Pilih ---</option>
                                     @foreach ($pendapatans as $pendapatan)
                                         <option value="{{ $pendapatan->id }}">
-                                            {{ $pendapatan->sumber_dana }} - {{ \Carbon\Carbon::parse($pendapatan->tgl_input)->format('Y') }}
+                                            {{ $pendapatan->sumber_dana }} -
+                                            {{ \Carbon\Carbon::parse($pendapatan->tgl_input)->format('Y') }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -396,7 +399,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="img_terealisasi" class="col-form-label">Bukti Terealisasi (Opsional)</label>
+                                <label for="img_terealisasi" class="col-form-label">Terlaksana (Opsional)</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="img_terealisasi"
