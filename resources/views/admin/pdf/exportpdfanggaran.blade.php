@@ -25,11 +25,20 @@
         th {
             background-color: #f2f2f2;
         }
+
+        .kop {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-    <h1 style="text-align: center;">Anggaran Desa Tahun {{ $filterYear }}</h1>
+    <img src="{{ public_path('dist/img/kopsurat.jpg') }}" alt="" class="kop">
+    <h3 style="text-align: center;">Anggaran Desa Tahun {{ $filterYear }}</h3>
     <table>
         <thead>
             <tr>

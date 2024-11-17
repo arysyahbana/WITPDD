@@ -108,10 +108,12 @@
                         <p class="text-4xl font-bold mt-2 mb-1 md:text-xl xl:text-4xl">
                             Website Informasi Transparansi Penggunaan Dana Desa
                         </p>
-                        <p class="text-xl mb-5 md:text-sm xl:text-xl">Mempermudah masyarakat dalam mengawasi penggunaan
+                        <p class="text-xl md:text-sm xl:text-xl">Mempermudah masyarakat dalam mengawasi penggunaan
                             dana desa secara
                             transparan dan
                             akuntabel</p>
+                        <p class="text-xl mb-5 md:text-sm xl:text-xl">Website ini dalam proses pengembangan, sehingga
+                            data yang disajikan pada sistem bukanlah data yang sebenarnya</p>
                         <a href="{{ route('login') }}" type="button"
                             class="focus:outline-none text-[#45474B] bg-[#23F9B5] hover:text-white hover:bg-teal-600 focus:ring-4 focus:ring-teal-500 font-medium rounded-3xl text-sm px-5 py-2.5 mb-2">
                             Login

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('tgl_transaksi');
             $table->text('uraian');
-            $table->foreignId('anggaran_id')->constrained('anggarans');
-            $table->foreignId('pendapatan_id')->constrained('pendapatans');
+            $table->foreignId('anggaran_id')->references('id')->on('anggarans')->onDelete('cascade');
+            $table->foreignId('pendapatan_id')->references('id')->on('pendapatans')->onDelete('cascade');
             $table->integer('jumlah_anggaran');
             $table->string('img_transaksi');
             $table->string('img_kegiatan')->nullable();
